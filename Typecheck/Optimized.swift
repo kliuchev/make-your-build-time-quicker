@@ -1,0 +1,1094 @@
+struct Model { let title: String; let score: Int }
+
+func format00(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format01(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format02(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format03(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format04(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format05(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format06(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format07(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format08(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format09(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format10(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format11(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format12(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format13(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format14(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format15(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format16(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format17(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format18(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format19(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format20(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format21(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format22(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format23(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format24(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format25(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format26(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format27(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format28(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format29(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format30(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format31(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format32(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format33(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format34(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format35(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format36(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format37(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format38(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format39(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format40(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format41(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format42(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format43(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format44(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format45(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format46(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format47(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format48(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format49(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format50(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format51(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format52(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format53(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format54(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format55(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format56(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format57(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format58(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format59(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format60(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format61(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format62(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func format63(_ model: Model) -> String {
+    let chunk1: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk2: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk3: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk4: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk5: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk6: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk7: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk8: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk9: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk10: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk11: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let chunk12: String = model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title + model.title
+    let label: String = chunk1 + chunk2 + chunk3 + chunk4 + chunk5 + chunk6 + chunk7 + chunk8 + chunk9 + chunk10 + chunk11 + chunk12
+    return "\(label):\(model.score)"
+}
+
+func render(_ model: Model) -> String {
+    let labels: [String] = [format00(model), format01(model), format02(model), format03(model), format04(model), format05(model), format06(model), format07(model), format08(model), format09(model), format10(model), format11(model), format12(model), format13(model), format14(model), format15(model), format16(model), format17(model), format18(model), format19(model), format20(model), format21(model), format22(model), format23(model), format24(model), format25(model), format26(model), format27(model), format28(model), format29(model), format30(model), format31(model), format32(model), format33(model), format34(model), format35(model), format36(model), format37(model), format38(model), format39(model), format40(model), format41(model), format42(model), format43(model), format44(model), format45(model), format46(model), format47(model), format48(model), format49(model), format50(model), format51(model), format52(model), format53(model), format54(model), format55(model), format56(model), format57(model), format58(model), format59(model), format60(model), format61(model), format62(model), format63(model)]
+    return labels.joined(separator: "|")
+}

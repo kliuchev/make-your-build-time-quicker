@@ -1,0 +1,17 @@
+.benchmark-runs/
+**/.build/
+**/.swiftpm/
+**/__pycache__/
+*.pyc
+.DS_Store
+
+# Generated local measurements and archives.
+/evidence/
+/RESULTS.md
+/nslondon-build-time-demo/
+/*.zip
+/*.zip.tmp
+
+# Local preparation material is not part of the public demo.
+/.local-preparation/
+/PRESENTATION_PLAN*.md

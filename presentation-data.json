@@ -1,0 +1,93 @@
+{
+  "status": "measured",
+  "date": "2026-09-16",
+  "machine": "Mac17,9 · arm64 · 24 GB RAM",
+  "toolchain": "Xcode 27.0 · Swift 6.4 · Debug · 8 jobs",
+  "backend": "swiftbuild",
+  "repetitions": 3,
+  "workload": {
+    "libraryTargets": 100,
+    "executableTargets": 1,
+    "formatters": 64,
+    "termsPerFormatter": 120,
+    "sourceFiles": 101,
+    "sourceLines": 1452,
+    "sourceLinesExcludeManifests": true
+  },
+  "slideValues": {
+    "type.before": "9.28",
+    "type.after": "6.44",
+    "cache.before": "9.28",
+    "cache.after": "4.75",
+    "packages.baseline": "52.63 s",
+    "packages.feature": "23.01 s",
+    "packages.single": "9.28 s",
+    "combined.before": "52.63 s",
+    "combined.cold": "6.44 s",
+    "combined.after": "4.76 s",
+    "type.gain": "30.7% less time at the median",
+    "packages.gain": "82.4% less time at the median",
+    "combined.gain": "90.9% less time at the median",
+    "cache.hits": "204 cache hits",
+    "cache.misses": "0 misses",
+    "expression.before": "22.52",
+    "expression.after": "4.09",
+    "manifest.compile": "0.23",
+    "manifest.dump": "0.52",
+    "manifest.execute": "0.13",
+    "manifest.serial100": "23",
+    "project.sourceLines": "1,452",
+    "build.repeats": "3",
+    "expression.repeats": "7",
+    "manifest.repeats": "7"
+  },
+  "slideNumbers": {
+    "type.before": 9.282736125,
+    "type.after": 6.435810208000001,
+    "cache.before": 9.282736125,
+    "cache.after": 4.745269167000004,
+    "packages.baseline": 52.629115,
+    "packages.feature": 23.010641832999994,
+    "packages.single": 9.282736125,
+    "combined.before": 52.629115,
+    "combined.cold": 6.435810208000001,
+    "combined.after": 4.764785249999999
+  },
+  "noteValues": {
+    "typecheckOnly.beforeSeconds": "9.28",
+    "typecheckOnly.afterSeconds": "6.44",
+    "cacheOnly.beforeSeconds": "9.28",
+    "cacheOnly.afterSeconds": "4.75",
+    "cacheOnly.hits": "204",
+    "packagesOnly.baselineSeconds": "52.63",
+    "packagesOnly.featureSeconds": "23.01",
+    "packagesOnly.singleSeconds": "9.28",
+    "combined.beforeSeconds": "52.63",
+    "combined.afterSeconds": "4.76",
+    "expression.beforeMs": "22.52",
+    "expression.afterMs": "4.09",
+    "manifest.compileSeconds": "0.23",
+    "manifest.executeSeconds": "0.13",
+    "manifest.dumpSeconds": "0.52",
+    "manifest.serial100Seconds": "23",
+    "project.sourceLines": "1,452",
+    "build.repeats": "3"
+  },
+  "experimentNotes": {
+    "type": "single/cold_off: median 9.28 s, range 9.25–9.28 s. optimized/cold_off: median 6.44 s, range 6.37–6.55 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
+    "cache": "single/cold_off: median 9.28 s, range 9.25–9.28 s. single/cache_fill: median 9.24 s, range 9.09–9.36 s. single/cache_hit: median 4.75 s, range 4.70–4.75 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
+    "packages": "baseline/cold_off: median 52.63 s, range 36.26–53.35 s. feature/cold_off: median 23.01 s, range 18.26–24.95 s. single/cold_off: median 9.28 s, range 9.25–9.28 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
+    "combined": "baseline/cold_off: median 52.63 s, range 36.26–53.35 s. optimized/cold_off: median 6.44 s, range 6.37–6.55 s. optimized/cache_fill: median 6.58 s, range 6.54–6.60 s. optimized/cache_hit: median 4.76 s, range 4.75–4.81 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
+    "expression": "Standalone example: 7 repetitions. Type checking the whole value() function: 22.52 → 4.09 ms. The only change is a Double annotation on the local x. Identical Double bit patterns were verified. This is not total build time.",
+    "manifest": "Standalone minimal manifest: 7 repetitions. swift package dump-package: 0.52 s; swiftc compile + link: 0.23 s; JSON execution: 0.13 s. These are separate measurements; their medians do not necessarily add up. OS file cache and shipped SDK modules are retained."
+  },
+  "reportPath": "evidence/isolated/report.json",
+  "expressionSources": {
+    "before": "func value() -> Double {\n    let x = 1 * 2 * 3 * 4\n        * 5 * 6 * 7.5\n    return x\n}\n",
+    "after": "func value() -> Double {\n    let x: Double = 1 * 2 * 3 * 4\n        * 5 * 6 * 7.5\n    return x\n}\n"
+  },
+  "microbenchmarkReports": {
+    "expression": "evidence/expression-probe/report.json",
+    "manifest": "evidence/manifest-probe/report.json"
+  }
+}

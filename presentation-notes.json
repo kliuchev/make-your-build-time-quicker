@@ -1,0 +1,589 @@
+{
+  "schemaVersion": 1,
+  "language": "en",
+  "talkTitle": "Make your build time quicker",
+  "speaker": {
+    "name": "Sviatoslav Kliuchev",
+    "role": "Lead Software Engineer",
+    "company": "JPMorgan Personal Investing"
+  },
+  "spokenDurationSeconds": 1050,
+  "spokenDuration": "17:30",
+  "buffer": {
+    "start": "17:30",
+    "end": "18:00",
+    "durationSeconds": 30
+  },
+  "questions": {
+    "start": "18:00",
+    "end": "20:00",
+    "durationSeconds": 120
+  },
+  "slides": [
+    {
+      "id": 1,
+      "title": "Hello, NSLondon",
+      "durationSeconds": 30,
+      "onSlide": [
+        "Sviatoslav Kliuchev",
+        "Lead Software Engineer",
+        "JPMorgan Personal Investing"
+      ],
+      "speakerNotes": [
+        "Hello, everyone! I’m Sviatoslav Kliuchev, a Lead Software Engineer at JPMorgan Personal Investing. Today we’ll talk about the time we give up every day while our projects build. I’ve prepared a small repository where you can reproduce all the measurements. I’ll show the recorded results here, and you can run the examples on your own machine after the talk."
+      ],
+      "transition": "Let’s start with the goal.",
+      "sourceURLs": [],
+      "startSeconds": 0,
+      "start": "0:00",
+      "endSeconds": 30,
+      "end": "0:30"
+    },
+    {
+      "id": 2,
+      "title": "Make your build time quicker",
+      "durationSeconds": 10,
+      "onSlide": [
+        "Make your build time quicker"
+      ],
+      "speakerNotes": [
+        "Make your build time quicker. Over the next seventeen minutes, I’ll share a few practical ways to answer one question sooner: does my idea work?"
+      ],
+      "transition": "Why does this matter so much now?",
+      "sourceURLs": [],
+      "startSeconds": 30,
+      "start": "0:30",
+      "endSeconds": 40,
+      "end": "0:40"
+    },
+    {
+      "id": 3,
+      "title": "Why build time matters",
+      "onSlide": [
+        "Life isn’t endless.",
+        "CI/CD",
+        "AI loops"
+      ],
+      "speakerNotes": [
+        "Hands up if your project builds in under two minutes. I’m happy for you — today will be a little less painful for you. Now, who waits eight to ten minutes or more? This is especially for you.",
+        "The first reason is simple: life isn’t endless. We’d like to spend it on something besides Xcode’s progress bar. Second, CI/CD: faster builds mean faster feedback on pull requests and releases. And third, AI loops. Let’s take a closer look at those."
+      ],
+      "transition": "Let’s look at one iteration.",
+      "sourceURLs": [],
+      "durationSeconds": 50,
+      "startSeconds": 40,
+      "start": "0:40",
+      "endSeconds": 90,
+      "end": "1:30"
+    },
+    {
+      "id": 4,
+      "title": "AI tests hypotheses in a loop",
+      "durationSeconds": 45,
+      "onSlide": [
+        "Hypothesis → code change → run a check → feedback → new hypothesis"
+      ],
+      "speakerNotes": [
+        "AI development is a sequence of hypotheses. The agent thinks a change will solve the problem, writes the code, runs a check and gets feedback. The build fails, so it fixes the code. The build passes but a test fails, so it tries another hypothesis.",
+        "This loop repeats until it gets a result. Each iteration includes time spent by the model and its tools. If validation takes up most of that time, generating code faster only helps so much. We need to shorten the wait for the next useful piece of feedback."
+      ],
+      "transition": "Let’s compare the same loop in two environments.",
+      "sourceURLs": [],
+      "startSeconds": 90,
+      "start": "1:30",
+      "endSeconds": 135,
+      "end": "2:15"
+    },
+    {
+      "id": 5,
+      "title": "Web: more iterations",
+      "onSlide": [
+        "Change the code → run it → get feedback",
+        "Shorter steps → more hypotheses tested"
+      ],
+      "speakerNotes": [
+        "In a typical web development loop, every step is short: change the code, run it, see the result. That lets an engineer, or their AI agent, try a lot of ideas.",
+        "I’m talking about a fast local development loop, for example with HMR. Web development also has bundling, transforms, type checking and production builds. I’m not claiming that compilation doesn’t exist there."
+      ],
+      "transition": "Now let’s look at the same loop in iOS.",
+      "sourceURLs": [
+        "https://vite.dev/guide/why.html"
+      ],
+      "durationSeconds": 25,
+      "startSeconds": 135,
+      "start": "2:15",
+      "endSeconds": 160,
+      "end": "2:40"
+    },
+    {
+      "id": 6,
+      "title": "iOS: your build is the bottleneck",
+      "onSlide": [
+        "Your build is the bottleneck",
+        "10 minutes per build → at most 6 iterations per hour"
+      ],
+      "speakerNotes": [
+        "In iOS, compiling the project sits between making a change and checking it. If compilation takes up most of the loop, that’s your bottleneck.",
+        "With a ten-minute build, you can complete at most six sequential iterations per hour. In practice, it’s fewer: that calculation leaves out editing the code, running tests and analysing the result. Colleagues with shorter builds can test more hypotheses in the same hour."
+      ],
+      "transition": "Let’s speed up the slowest part of the loop.",
+      "sourceURLs": [],
+      "durationSeconds": 45,
+      "startSeconds": 160,
+      "start": "2:40",
+      "endSeconds": 205,
+      "end": "3:25"
+    },
+    {
+      "id": 7,
+      "title": "How to make builds faster",
+      "onSlide": [
+        "Type checking",
+        "Compile cache",
+        "Fewer packages",
+        "Tooling"
+      ],
+      "speakerNotes": [
+        "We have four options: help the type checker, enable the compile cache, reduce the number of packages and, if that’s still not enough, reconsider the tooling.",
+        "I measured the first three techniques separately. For packages, there are two ways to apply the same idea: one package per feature, or one package for all internal modules."
+      ],
+      "transition": "Let’s start with one line of code.",
+      "sourceURLs": [],
+      "durationSeconds": 25,
+      "startSeconds": 205,
+      "start": "3:25",
+      "endSeconds": 230,
+      "end": "3:50"
+    },
+    {
+      "id": 8,
+      "title": "Type checking: reasonable time",
+      "onSlide": [
+        "The compiler is unable to type-check this expression in reasonable time"
+      ],
+      "speakerNotes": [
+        "Does this message look familiar? The compiler can’t type-check the expression in reasonable time. What’s reasonable for the compiler can feel pretty painful to us.",
+        "Swift resolves overloads and infers types. The more connected, ambiguous choices an expression contains, the more work the solver has to do. So code that looks short isn’t necessarily quick to check."
+      ],
+      "transition": "Apple is working on this too.",
+      "sourceURLs": [
+        "https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048"
+      ],
+      "durationSeconds": 55,
+      "startSeconds": 230,
+      "start": "3:50",
+      "endSeconds": 285,
+      "end": "4:45"
+    },
+    {
+      "id": 9,
+      "title": "Swift 6.4: rule out bad choices earlier",
+      "durationSeconds": 60,
+      "onSlide": [
+        "Disjunction pruning",
+        "More precise binding inference",
+        "SwiftUI SDK: ContentBuilder reduces overload choices"
+      ],
+      "speakerNotes": [
+        "Swift 6.4 includes several changes to the compiler itself. Disjunction pruning rules out overloads earlier when they clearly cannot work. Improved binding inference narrows down the possible types more precisely. Some repeated calculations now happen only after the constraints change.",
+        "Separately, the SwiftUI SDK in Xcode 27 introduced ContentBuilder. Common builder APIs are unified, giving the compiler fewer alternatives between different kinds of content.",
+        "These are two separate groups of improvements. They don’t make every expression instant: complex closures, overloads and especially diagnostics for invalid code remain difficult cases. And invalid code is exactly what an agent often needs to check."
+      ],
+      "transition": "What can we do in our projects today?",
+      "sourceURLs": [
+        "https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048",
+        "https://developer.apple.com/videos/play/wwdc2026/269/"
+      ],
+      "startSeconds": 285,
+      "start": "4:45",
+      "endSeconds": 345,
+      "end": "5:45"
+    },
+    {
+      "id": 10,
+      "title": "Types can still be hard to infer",
+      "onSlide": [
+        "Find an expensive expression",
+        "Make the types explicit",
+        "Break the expression up"
+      ],
+      "speakerNotes": [
+        "Type inference can still run into problems. Diagnosing code that is already invalid can be especially difficult: the solver also tries to work out what we meant.",
+        "A practical first step is to enable diagnostics for slow expressions and functions. The thresholds on the slide are examples for finding problems, not a permanent rule for CI. Then give the compiler some help: explicit types, intermediate values and shorter expressions."
+      ],
+      "transition": "Here’s a concrete example at the level of one function.",
+      "sourceURLs": [
+        "https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048",
+        "https://forums.swift.org/t/roadmap-for-improving-the-type-checker/82952"
+      ],
+      "durationSeconds": 55,
+      "startSeconds": 345,
+      "start": "5:45",
+      "endSeconds": 400,
+      "end": "6:40"
+    },
+    {
+      "id": 11,
+      "title": "Same result. Less guesswork.",
+      "onSlide": [
+        "Complete code before and after",
+        "Type checking one function, in milliseconds"
+      ],
+      "speakerNotes": [
+        "This slide shows the complete code that we measured, before and after. It’s a small, separate example, so these timings don’t include the package graph or the full build.",
+        "The median type-checking time for the whole function is {{expression.beforeMs}} milliseconds before and {{expression.afterMs}} milliseconds after. We ran it seven times with Swift 6.4 and fresh module caches. The timings come from -debug-time-function-bodies, and we separately verified that the results match.",
+        "We count the time for the whole function, including every new intermediate expression. Comparing the slowest old line with the slowest new piece would be misleading."
+      ],
+      "transition": "Sometimes we can avoid doing that work again altogether.",
+      "sourceURLs": [],
+      "durationSeconds": 60,
+      "startSeconds": 400,
+      "start": "6:40",
+      "endSeconds": 460,
+      "end": "7:40"
+    },
+    {
+      "id": 12,
+      "title": "Compile cache",
+      "onSlide": [
+        "Compile cache",
+        "Just turn it on."
+      ],
+      "speakerNotes": [
+        "Compile cache. Just turn it on. When the compiler sees the same inputs again, it can return the result it saved earlier."
+      ],
+      "transition": "In Xcode, that starts with two settings.",
+      "sourceURLs": [
+        "https://developer.apple.com/documentation/xcode/build-settings-reference"
+      ],
+      "durationSeconds": 15,
+      "startSeconds": 460,
+      "start": "7:40",
+      "endSeconds": 475,
+      "end": "7:55"
+    },
+    {
+      "id": 13,
+      "title": "Two settings in Xcode",
+      "onSlide": [
+        "ENABLE_CACHING = YES",
+        "ENABLE_DIAGNOSTIC_REMARKS = YES",
+        "The first build fills the cache; the next one reuses it"
+      ],
+      "speakerNotes": [
+        "The first setting enables compilation caching. The second helps you see hits and misses in the build log. You can set them in an xcconfig file or in Build Settings.",
+        "The first build needs to populate the cache. When a task runs again with the same sources, flags, SDK and dependencies, its result can come from the cache. After enabling it, check for actual hits in your workflow."
+      ],
+      "transition": "Here’s the measured result from the demo.",
+      "sourceURLs": [
+        "https://developer.apple.com/documentation/xcode/build-settings-reference"
+      ],
+      "durationSeconds": 35,
+      "startSeconds": 475,
+      "start": "7:55",
+      "endSeconds": 510,
+      "end": "8:30"
+    },
+    {
+      "id": 14,
+      "title": "Compile cache only: before and after",
+      "onSlide": [
+        "1,452 lines of Swift; 101 targets; 1 manifest",
+        "Cache OFF → warm CAS ON",
+        "204 hits; 0 misses"
+      ],
+      "speakerNotes": [
+        "First, some context: the demo has {{project.sourceLines}} lines of Swift across 101 source files, with 100 library targets and one executable. In this comparison, everything is under one Package.swift, and the sources are identical.",
+        "With the cache off: {{cacheOnly.beforeSeconds}} seconds. After a separate step to populate the compiler cache: {{cacheOnly.afterSeconds}} seconds. Both builds have fresh build artifacts, DerivedData and module caches. Only the CAS is retained in the right-hand column, so that cache is not completely cold.",
+        "We recorded {{cacheOnly.hits}} hits and zero misses: 101 objects, 101 Swift modules and two SDK tasks. {{build.repeats}} runs, on the same machine, using Swift 6.4 and Debug without DWARF. The report includes the full method and ranges."
+      ],
+      "transition": "There are a few details to watch with paths and a shared team cache.",
+      "sourceURLs": [],
+      "durationSeconds": 50,
+      "startSeconds": 510,
+      "start": "8:30",
+      "endSeconds": 560,
+      "end": "9:20"
+    },
+    {
+      "id": 15,
+      "title": "Cache: paths and teams",
+      "onSlide": [
+        "In our configuration: same path HIT, different directory MISS",
+        "Prefix mapping needs configuration",
+        "Remote sharing needs a service and integration"
+      ],
+      "speakerNotes": [
+        "Our control test without prefix mapping produced a hit at the original path and a miss after moving the same sources to another directory. So separate worktree directories may not automatically reuse cached results.",
+        "That isn’t a fundamental restriction on reuse between directories. Xcode 27 has Swift and Clang prefix mapping, including project prefix mapping. Check those settings against real cache hits in your project.",
+        "It would also be wrong to say that remote caching isn’t supported at all. For example, Tuist can share compilation artifacts between machines through a service and plugin integration. The COMPILATION_CACHE_ENABLE_CACHING flag alone doesn’t enable that sharing."
+      ],
+      "transition": "The next source of waiting is the package structure.",
+      "sourceURLs": [
+        "https://forums.swift.org/t/about-swift-shared-cache-across-machines/81850",
+        "https://tuist.dev/en/docs/guides/features/cache/xcode-cache"
+      ],
+      "durationSeconds": 45,
+      "startSeconds": 560,
+      "start": "9:20",
+      "endSeconds": 605,
+      "end": "10:05"
+    },
+    {
+      "id": 16,
+      "title": "Modularization + SPM",
+      "onSlide": [
+        "A large project. Clean Architecture.",
+        "Feature packages + layers",
+        "Nice and clean. But there’s a cost."
+      ],
+      "speakerNotes": [
+        "If you work on a large project with Clean Architecture, you probably have feature packages and separate Data, Domain and Presentation layers.",
+        "It all looks nice and clean: visible dependencies and tidy boundaries. But when every layer is a separate package, the build system pays for it."
+      ],
+      "transition": "Let’s count them.",
+      "sourceURLs": [],
+      "durationSeconds": 25,
+      "startSeconds": 605,
+      "start": "10:05",
+      "endSeconds": 630,
+      "end": "10:30"
+    },
+    {
+      "id": 17,
+      "title": "How we end up with 100 packages",
+      "onSlide": [
+        "33 features × 3 layers + Shared = 100 packages"
+      ],
+      "speakerNotes": [
+        "Thirty-three features, each with three layers: Data, Domain and Presentation. Plus one common Shared package. That gives us one hundred separate packages.",
+        "The demo also has a root executable package above them. That’s why the measurements use 101 Package.swift files. It’s the same hundred application packages plus the root, not a different project."
+      ],
+      "transition": "What happens to each of those manifests?",
+      "sourceURLs": [],
+      "durationSeconds": 25,
+      "startSeconds": 630,
+      "start": "10:30",
+      "endSeconds": 655,
+      "end": "10:55"
+    },
+    {
+      "id": 18,
+      "title": "Package.swift needs to be built too",
+      "onSlide": [
+        "Compile → run → get the package description",
+        "A measured minimal manifest"
+      ],
+      "speakerNotes": [
+        "Package.swift is a Swift program. With an empty manifest cache, it has to be compiled and run to obtain the package description. SwiftPM then connects the graph and prepares the target tasks.",
+        "I separately measured a minimal four-line manifest with no targets. On this machine, the median for compilation and linking was {{manifest.compileSeconds}} seconds, and execution took {{manifest.executeSeconds}} seconds. A complete, separate swift package dump-package invocation took {{manifest.dumpSeconds}} seconds. Seven runs, with fresh private caches.",
+        "So about half a second is accurate for the full CLI invocation in this example. But calling 0.6 seconds the minimum compilation cost of any Package.swift would be inaccurate."
+      ],
+      "transition": "Let’s multiply the part we actually measured.",
+      "sourceURLs": [
+        "https://github.com/swiftlang/swift-package-manager/blob/main/Sources/PackageLoading/ManifestLoader.swift"
+      ],
+      "durationSeconds": 50,
+      "startSeconds": 655,
+      "start": "10:55",
+      "endSeconds": 705,
+      "end": "11:45"
+    },
+    {
+      "id": 19,
+      "title": "That work repeats for every package",
+      "onSlide": [
+        "100 × the compilation cost of one manifest",
+        "Total work ≠ a lower bound on build time"
+      ],
+      "speakerNotes": [
+        "If we repeated that measured minimal-manifest compilation one hundred times in sequence, it would take around {{manifest.serial100Seconds}} seconds. And that’s before compiling the targets themselves.",
+        "This illustrates accumulated work, not an exact total build time. Within a build, some work runs in parallel and can share caches. So our measurements don’t support saying that a hundred packages means at least a minute. To see the full effect, we’ll compare the project itself."
+      ],
+      "transition": "The solution is to reduce the number of manifests.",
+      "sourceURLs": [],
+      "durationSeconds": 25,
+      "startSeconds": 705,
+      "start": "11:45",
+      "endSeconds": 730,
+      "end": "12:10"
+    },
+    {
+      "id": 20,
+      "title": "The solution: fewer packages",
+      "onSlide": [
+        "One package per feature, with targets for each layer",
+        "Or one package for all internal features",
+        "Same results. Different experience."
+      ],
+      "speakerNotes": [
+        "Instead of N times M packages, start with one Package.swift per feature. Keep separate Data, Domain and Presentation targets inside it, with explicit dependencies between them.",
+        "The next option is one internal package for all the features. Each target remains a module, so separate imports and module boundaries are preserved. You can keep the library products you need.",
+        "Same results. Different experience. In a real migration, also check package access, resources, plugins and whether any packages need independent versions."
+      ],
+      "transition": "Here’s what happened when we changed only that.",
+      "sourceURLs": [
+        "https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html#target"
+      ],
+      "durationSeconds": 50,
+      "startSeconds": 730,
+      "start": "12:10",
+      "endSeconds": 780,
+      "end": "13:00"
+    },
+    {
+      "id": 21,
+      "title": "Packages only: the same code, fewer manifests",
+      "onSlide": [
+        "101 → 35 → 1 manifest",
+        "Identical Swift sources and 101 targets",
+        "Compiler cache OFF"
+      ],
+      "speakerNotes": [
+        "Here, we change only how the modules are packaged. The Swift source files are byte-for-byte identical, the targets are the same and the compiler cache is off. The original version with 101 manifests takes {{packagesOnly.baselineSeconds}} seconds.",
+        "One package per feature gives us 35 manifests, including Shared and the root: {{packagesOnly.featureSeconds}} seconds. One shared manifest takes {{packagesOnly.singleSeconds}} seconds.",
+        "We reduce the work needed to load manifests and prepare the graph. The number of library modules stays the same. These are complete command timings, not a sum of individual manifest timers."
+      ],
+      "transition": "Now let’s combine the first three techniques.",
+      "sourceURLs": [],
+      "durationSeconds": 50,
+      "startSeconds": 780,
+      "start": "13:00",
+      "endSeconds": 830,
+      "end": "13:50"
+    },
+    {
+      "id": 22,
+      "title": "All techniques together",
+      "onSlide": [
+        "Baseline → types + packages → types + packages + cache",
+        "A synthetic test; real-world gains may be smaller"
+      ],
+      "speakerNotes": [
+        "The original version takes {{combined.beforeSeconds}} seconds. Explicit types and a single manifest reduce the time with a completely empty compiler cache. We get {{combined.afterSeconds}} seconds when we also allow reuse of a populated CAS.",
+        "This is a synthetic demo project with 64 deliberately long formatting functions and lots of small packages. Both bottlenecks are amplified here. In a real project, the effect may be smaller: you still have other sources, assets, linking, code generation and tests.",
+        "You can’t add up the percentages from the individual techniques. A cache hit already skips type checking, and your actual gain depends on where your project spends its time."
+      ],
+      "transition": "What if that’s still not enough?",
+      "sourceURLs": [],
+      "durationSeconds": 55,
+      "startSeconds": 830,
+      "start": "13:50",
+      "endSeconds": 885,
+      "end": "14:45"
+    },
+    {
+      "id": 23,
+      "title": "What if that’s still not enough?",
+      "onSlide": [
+        "What if none of this gets you the result you need?"
+      ],
+      "speakerNotes": [
+        "We’ve tried the inexpensive local changes. If the measured result still doesn’t meet the team’s needs, it’s time to discuss build infrastructure."
+      ],
+      "transition": "For example, Bazel.",
+      "sourceURLs": [],
+      "durationSeconds": 15,
+      "startSeconds": 885,
+      "start": "14:45",
+      "endSeconds": 900,
+      "end": "15:00"
+    },
+    {
+      "id": 24,
+      "title": "Bazel",
+      "onSlide": [
+        "Remote cache",
+        "Remote execution",
+        "An explicit module graph",
+        "Migration, a steep learning curve and retraining"
+      ],
+      "speakerNotes": [
+        "Bazel gives you a remote cache, so you can reuse results from teammates and CI. Remote execution lets build and test actions run on remote workers. Explicit targets and dependencies help you manage a large module graph.",
+        "But those benefits take investment. You need time for migration, rules and toolchains, and integration with the IDE and CI. Getting started is hard; the team has to learn and maintain a new workflow.",
+        "Build infrastructure needs a permanent owner. Apple actions need a compatible macOS environment. There’s no magic threshold of one hundred engineers: the return depends on your scale and how much time you’re actually losing."
+      ],
+      "transition": "That’s why it’s worth starting with the simple steps.",
+      "sourceURLs": [
+        "https://bazel.build/remote/caching",
+        "https://bazel.build/remote/rules",
+        "https://github.com/bazelbuild/rules_swift"
+      ],
+      "durationSeconds": 55,
+      "startSeconds": 900,
+      "start": "15:00",
+      "endSeconds": 955,
+      "end": "15:55"
+    },
+    {
+      "id": 25,
+      "title": "What you can do today",
+      "durationSeconds": 50,
+      "onSlide": [
+        "Enable the cache and check for hits",
+        "Find the slowest expressions",
+        "Count Package.swift files and choose the first merge"
+      ],
+      "speakerNotes": [
+        "There are three things you can do today. Enable the compile cache and check for hits in your real workflow. Add type-checking diagnostics and find the most expensive expressions. And simply count how many Package.swift files you have.",
+        "If every feature has three nearly empty packages, pick one feature, merge its manifests while keeping the targets, and measure the difference.",
+        "You don’t need to migrate the whole project at once. Get one reproducible result, check the behaviour and expand the change gradually. The goal is to get back to the next hypothesis sooner."
+      ],
+      "transition": "That’s all from me.",
+      "sourceURLs": [],
+      "startSeconds": 955,
+      "start": "15:55",
+      "endSeconds": 1005,
+      "end": "16:45"
+    },
+    {
+      "id": 26,
+      "title": "Thank you",
+      "durationSeconds": 10,
+      "onSlide": [
+        "Thank you"
+      ],
+      "speakerNotes": [
+        "Thank you! I hope your next coffee break happens because you want one, not because the compiler insists."
+      ],
+      "transition": "I’ll leave the links up, and let’s take some questions.",
+      "sourceURLs": [],
+      "startSeconds": 1005,
+      "start": "16:45",
+      "endSeconds": 1015,
+      "end": "16:55"
+    },
+    {
+      "id": 27,
+      "title": "Demo repository and LinkedIn",
+      "durationSeconds": 35,
+      "onSlide": [
+        "Demo repository",
+        "LinkedIn",
+        "Two QR codes"
+      ],
+      "speakerNotes": [
+        "The first QR takes you to the demo repository: source code, benchmark scripts and the slides. The second takes you to my LinkedIn profile. You can download the project and reproduce the measurements on your own Mac.",
+        "All the numbers come from the demo project. The most useful next step is to apply the same method to your own build. Thank you — let’s take some questions."
+      ],
+      "qr": [
+        {
+          "label": "Demo repository",
+          "url": "https://github.com/kliuchev/make-your-build-time-quicker",
+          "temporary": false
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/sviatoslav-kliuchev-50034097/",
+          "temporary": false
+        }
+      ],
+      "transition": "Keep this slide visible during questions.",
+      "sourceURLs": [],
+      "startSeconds": 1015,
+      "start": "16:55",
+      "endSeconds": 1050,
+      "end": "17:30"
+    }
+  ]
+}
