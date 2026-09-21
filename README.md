@@ -1,8 +1,5 @@
 # Make your build time quicker
 
-**Sviatoslav Kliuchev**  
-Lead Software Engineer at JPMorgan Personal Investing · [LinkedIn](https://www.linkedin.com/in/sviatoslav-kliuchev-50034097/)
-
 Faster builds mean shorter AI feedback loops, quicker CI feedback and less time watching a progress bar. This talk explores type checking, compilation caching, package structure and build tooling—with reproducible Swift examples.
 
 **[View the slides](https://kliuchev.github.io/make-your-build-time-quicker/)** · **[Download the demo ZIP](https://github.com/kliuchev/make-your-build-time-quicker/archive/refs/heads/main.zip)**
