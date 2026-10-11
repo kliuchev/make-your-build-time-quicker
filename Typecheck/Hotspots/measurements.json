@@ -1,0 +1,781 @@
+{
+  "schema_version": 1,
+  "hardware": {
+    "model": "Mac17,9",
+    "architecture": "arm64",
+    "memory_gb": 24
+  },
+  "primary": {
+    "method": "whole-function-typechecking-v1",
+    "date": "2026-10-11",
+    "xcode": "Xcode 27.1\nBuild version 27A9269",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx26.0",
+    "developer_dir": "/Applications/Xcode.app/Contents/Developer",
+    "language_mode": "6",
+    "machine": "macOS-26.6.2-arm64-arm-64bit",
+    "repeats": 7,
+    "cases": {
+      "product": {
+        "title": "Nine factors, with a floating-point literal last",
+        "paths": [
+          "Typecheck/ExpressionBefore.swift",
+          "Typecheck/ExpressionAfter.swift"
+        ],
+        "change": "Give the local value an explicit Double type.",
+        "origin": "Scaled version of the repository's original expression example.",
+        "source_text": {
+          "before": "func value() -> Double {\n    let x = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n",
+          "after": "func value() -> Double {\n    let x: Double = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n"
+        },
+        "source_sha256": {
+          "before": "269f0a4dbc3ef5205b5c7c10c2816bdf331b868b01a6fc0ccea9e1f9f27ce26d",
+          "after": "1bf91c277edf078803b3f84c6076c288706c5699448fe6916557b9d1b84a2298"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 910.48,
+            "wall_seconds": 0.989128459
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 4.26,
+            "wall_seconds": 0.08196787500000013
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 4.21,
+            "wall_seconds": 0.08098545799999979
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 1067.1,
+            "wall_seconds": 1.2258384160000002
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 1216.15,
+            "wall_seconds": 1.6176556250000003
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 4.62,
+            "wall_seconds": 0.094009958
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 4.75,
+            "wall_seconds": 0.09125704199999962
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 1002.98,
+            "wall_seconds": 1.1100219999999998
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 989.78,
+            "wall_seconds": 1.0953250829999996
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 4.54,
+            "wall_seconds": 0.0931286250000003
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 5.6,
+            "wall_seconds": 0.1021212079999998
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 1023.76,
+            "wall_seconds": 1.1442578330000002
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 971.35,
+            "wall_seconds": 1.06520175
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 4.23,
+            "wall_seconds": 0.09075341700000017
+          }
+        ],
+        "medians": {
+          "before_ms": 1002.98,
+          "after_ms": 4.54
+        },
+        "ranges_ms": {
+          "before": [
+            910.48,
+            1216.15
+          ],
+          "after": [
+            4.21,
+            5.6
+          ]
+        },
+        "speedup": 220.92070484581498,
+        "saved_ms": 998.44,
+        "outputs_equal": true,
+        "output": "4690324189557555200"
+      },
+      "predicate": {
+        "title": "Generic key path API with optional enum comparisons",
+        "paths": [
+          "Typecheck/Hotspots/PredicateBefore.swift",
+          "Typecheck/Hotspots/PredicateAfter.swift"
+        ],
+        "change": "Annotate the closure parameter as Model and its return type as Bool.",
+        "origin": "Adapted from Swift's rdar180205468 regression test; matches() executes the predicate for verification.",
+        "source_url": "https://github.com/swiftlang/swift/blob/d8754319df83d6e93189337b645180f73038cb97/validation-test/Sema/type_checker_perf/slow/rdar180205468.swift",
+        "upstream_blob_sha": "6a1bf6b050c758ad67fcde14bbc18c17984ed327",
+        "source_text": {
+          "before": "enum Status { case active, paused }\n\nstruct Model {\n    var primary: Status\n    var secondary: Status?\n    var fallback: Status\n}\n\nfunc matches<Field, Item>(\n    _ item: Item, key: KeyPath<Item, Field>,\n    where predicate: (Item) -> Bool\n) -> Bool { predicate(item) }\n\nfunc value(_ model: Model) -> Bool {\n    matches(model, key: \\.primary) {\n        $0.primary == .active &&\n        $0.secondary == .active &&\n        $0.fallback == .active\n    }\n}\n",
+          "after": "enum Status { case active, paused }\n\nstruct Model {\n    var primary: Status\n    var secondary: Status?\n    var fallback: Status\n}\n\nfunc matches<Field, Item>(\n    _ item: Item, key: KeyPath<Item, Field>,\n    where predicate: (Item) -> Bool\n) -> Bool { predicate(item) }\n\nfunc value(_ model: Model) -> Bool {\n    matches(model, key: \\.primary) { (item: Model) -> Bool in\n        item.primary == .active &&\n        item.secondary == .active &&\n        item.fallback == .active\n    }\n}\n"
+        },
+        "source_sha256": {
+          "before": "d7b45f06899cf57284824605e1e11be89253cd626ec008d680748e0a221f687e",
+          "after": "aaaf6c20f59590bd0abfb716c0fb7fff822862db05b20823fe192f79a19ef0d5"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 2162.45,
+            "wall_seconds": 2.292710125000001
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 1.43,
+            "wall_seconds": 0.09060374999999965
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 1.55,
+            "wall_seconds": 0.08617595800000011
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 2096.05,
+            "wall_seconds": 2.1969212910000007
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 2157.94,
+            "wall_seconds": 2.2792506249999995
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 1.53,
+            "wall_seconds": 0.09324674999999871
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 3.14,
+            "wall_seconds": 0.11336454099999926
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 2109.28,
+            "wall_seconds": 2.2281071669999974
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 2056.21,
+            "wall_seconds": 2.1582459579999984
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 1.52,
+            "wall_seconds": 0.08798945799999913
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 1.61,
+            "wall_seconds": 0.08585387499999797
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 1986.31,
+            "wall_seconds": 2.074104041000002
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 2038.23,
+            "wall_seconds": 2.1276196250000012
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 1.43,
+            "wall_seconds": 0.08737375000000114
+          }
+        ],
+        "medians": {
+          "before_ms": 2096.05,
+          "after_ms": 1.53
+        },
+        "ranges_ms": {
+          "before": [
+            1986.31,
+            2162.45
+          ],
+          "after": [
+            1.43,
+            3.14
+          ]
+        },
+        "speedup": 1369.967320261438,
+        "saved_ms": 2094.52,
+        "outputs_equal": true,
+        "output": "true\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse"
+      },
+      "base64": {
+        "title": "String concatenation inside an overloaded Foundation initializer",
+        "paths": [
+          "Typecheck/Hotspots/Base64Before.swift",
+          "Typecheck/Hotspots/Base64After.swift"
+        ],
+        "change": "Extract the concatenation into a String-typed local value.",
+        "origin": "Adapted from the rdar180902902 scaling test, using actual Foundation.Data and a valid Hello payload.",
+        "source_url": "https://github.com/swiftlang/swift/blob/0c3bc9f591610887cb8bcf16cc16ac40f9669fc4/validation-test/Sema/type_checker_perf/slow/rdar180902902.swift.gyb",
+        "upstream_blob_sha": "ac8f8865aa65a95b93cbb312cffe5a7b0dcceea9",
+        "source_text": {
+          "before": "import Foundation\n\nfunc value() -> Data? {\n    return Data(base64Encoded:\n        \"S\" + \"G\" + \"V\" + \"s\" + \"b\" + \"G8=\", options: [])\n}\n",
+          "after": "import Foundation\n\nfunc value() -> Data? {\n    let encoded: String =\n        \"S\" + \"G\" + \"V\" + \"s\" + \"b\" + \"G8=\"\n    return Data(base64Encoded: encoded, options: [])\n}\n"
+        },
+        "source_sha256": {
+          "before": "9f9249730846cd95f079958d7affe174f6df9eb0bbf85bbd1ddc906961132c12",
+          "after": "8157638b591ec83775f5baf4e644e0d4752239dfe40f9e8ca711323ed6b27904"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 554.3,
+            "wall_seconds": 1.6506092500000022
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 7.75,
+            "wall_seconds": 0.9449260409999951
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 7.78,
+            "wall_seconds": 0.9405083750000003
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 552.86,
+            "wall_seconds": 1.496906917000004
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 548.79,
+            "wall_seconds": 1.4939546250000006
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 7.67,
+            "wall_seconds": 0.9459712499999995
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 8.74,
+            "wall_seconds": 0.9560434170000036
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 554.95,
+            "wall_seconds": 1.4945610830000007
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 548.37,
+            "wall_seconds": 1.4918096249999948
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 7.99,
+            "wall_seconds": 0.9470444169999936
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 7.68,
+            "wall_seconds": 0.9662130410000032
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 552.98,
+            "wall_seconds": 1.496576417
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 549.11,
+            "wall_seconds": 1.4947910409999992
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 7.92,
+            "wall_seconds": 0.9933465840000011
+          }
+        ],
+        "medians": {
+          "before_ms": 552.86,
+          "after_ms": 7.78
+        },
+        "ranges_ms": {
+          "before": [
+            548.37,
+            554.95
+          ],
+          "after": [
+            7.67,
+            8.74
+          ]
+        },
+        "speedup": 71.06169665809769,
+        "saved_ms": 545.08,
+        "outputs_equal": true,
+        "output": "[72, 101, 108, 108, 111]"
+      }
+    },
+    "notes": [
+      "Milliseconds are for the complete value() function, including all statements after splitting.",
+      "Each sample uses a fresh compiler process and private empty module cache; compilation caching is off.",
+      "Variant order alternates. OS page caches and SDK prebuilts are retained.",
+      "Wall time is recorded separately and includes compiler startup and imports.",
+      "No altered solver limits, disabled heuristics, or deliberately invalid expressions.",
+      "Timings vary with hardware and compiler revisions; future compilers may fix these cases."
+    ]
+  },
+  "swift5": {
+    "method": "whole-function-typechecking-v1",
+    "date": "2026-10-11",
+    "xcode": "Xcode 27.1\nBuild version 27A9269",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx26.0",
+    "language_mode": "5",
+    "machine": "macOS-26.6.2-arm64-arm-64bit",
+    "repeats": 7,
+    "cases": {
+      "product": {
+        "title": "Nine factors, with a floating-point literal last",
+        "paths": [
+          "Typecheck/ExpressionBefore.swift",
+          "Typecheck/ExpressionAfter.swift"
+        ],
+        "change": "Give the local value an explicit Double type.",
+        "origin": "Scaled version of the repository's original expression example.",
+        "source_text": {
+          "before": "func value() -> Double {\n    let x = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n",
+          "after": "func value() -> Double {\n    let x: Double = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n"
+        },
+        "source_sha256": {
+          "before": "269f0a4dbc3ef5205b5c7c10c2816bdf331b868b01a6fc0ccea9e1f9f27ce26d",
+          "after": "1bf91c277edf078803b3f84c6076c288706c5699448fe6916557b9d1b84a2298"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 831.39,
+            "wall_seconds": 0.9124816250000001
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 4.18,
+            "wall_seconds": 0.08395904100000018
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 4.24,
+            "wall_seconds": 0.0844942919999998
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 938.15,
+            "wall_seconds": 1.0198452910000002
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 839.4,
+            "wall_seconds": 0.9341189999999999
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 4.32,
+            "wall_seconds": 0.08315429199999969
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 4.28,
+            "wall_seconds": 0.08252229200000016
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 832.72,
+            "wall_seconds": 0.911936667
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 836.75,
+            "wall_seconds": 0.9184087910000001
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 4.31,
+            "wall_seconds": 0.0843499999999997
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 4.39,
+            "wall_seconds": 0.0834095829999999
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 834.09,
+            "wall_seconds": 0.9142732499999999
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 826.15,
+            "wall_seconds": 0.9078101670000001
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 4.27,
+            "wall_seconds": 0.08355437500000029
+          }
+        ],
+        "medians": {
+          "before_ms": 834.09,
+          "after_ms": 4.28
+        },
+        "ranges_ms": {
+          "before": [
+            826.15,
+            938.15
+          ],
+          "after": [
+            4.18,
+            4.39
+          ]
+        },
+        "speedup": 194.88084112149534,
+        "saved_ms": 829.8100000000001,
+        "outputs_equal": true,
+        "output": "4690324189557555200"
+      },
+      "predicate": {
+        "title": "Generic key path API with optional enum comparisons",
+        "paths": [
+          "Typecheck/Hotspots/PredicateBefore.swift",
+          "Typecheck/Hotspots/PredicateAfter.swift"
+        ],
+        "change": "Annotate the closure parameter as Model and its return type as Bool.",
+        "origin": "Adapted from Swift's rdar180205468 regression test; matches() executes the predicate for verification.",
+        "source_url": "https://github.com/swiftlang/swift/blob/d8754319df83d6e93189337b645180f73038cb97/validation-test/Sema/type_checker_perf/slow/rdar180205468.swift",
+        "upstream_blob_sha": "6a1bf6b050c758ad67fcde14bbc18c17984ed327",
+        "source_text": {
+          "before": "enum Status { case active, paused }\n\nstruct Model {\n    var primary: Status\n    var secondary: Status?\n    var fallback: Status\n}\n\nfunc matches<Field, Item>(\n    _ item: Item, key: KeyPath<Item, Field>,\n    where predicate: (Item) -> Bool\n) -> Bool { predicate(item) }\n\nfunc value(_ model: Model) -> Bool {\n    matches(model, key: \\.primary) {\n        $0.primary == .active &&\n        $0.secondary == .active &&\n        $0.fallback == .active\n    }\n}\n",
+          "after": "enum Status { case active, paused }\n\nstruct Model {\n    var primary: Status\n    var secondary: Status?\n    var fallback: Status\n}\n\nfunc matches<Field, Item>(\n    _ item: Item, key: KeyPath<Item, Field>,\n    where predicate: (Item) -> Bool\n) -> Bool { predicate(item) }\n\nfunc value(_ model: Model) -> Bool {\n    matches(model, key: \\.primary) { (item: Model) -> Bool in\n        item.primary == .active &&\n        item.secondary == .active &&\n        item.fallback == .active\n    }\n}\n"
+        },
+        "source_sha256": {
+          "before": "d7b45f06899cf57284824605e1e11be89253cd626ec008d680748e0a221f687e",
+          "after": "aaaf6c20f59590bd0abfb716c0fb7fff822862db05b20823fe192f79a19ef0d5"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 2019.72,
+            "wall_seconds": 2.119483667000001
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 1.34,
+            "wall_seconds": 0.08571387499999972
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 1.39,
+            "wall_seconds": 0.08418695800000009
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 2014.74,
+            "wall_seconds": 2.1029864170000003
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 2028.77,
+            "wall_seconds": 2.120207583000001
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 1.42,
+            "wall_seconds": 0.08726545799999919
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 1.4,
+            "wall_seconds": 0.08644558299999971
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 2038.92,
+            "wall_seconds": 2.1274237079999985
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 1978.78,
+            "wall_seconds": 2.0696392500000016
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 1.41,
+            "wall_seconds": 0.08648208299999993
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 1.37,
+            "wall_seconds": 0.08494766600000148
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 2024.44,
+            "wall_seconds": 2.1128706249999993
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 2028.79,
+            "wall_seconds": 2.1181261659999997
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 1.36,
+            "wall_seconds": 0.0869946660000025
+          }
+        ],
+        "medians": {
+          "before_ms": 2024.44,
+          "after_ms": 1.39
+        },
+        "ranges_ms": {
+          "before": [
+            1978.78,
+            2038.92
+          ],
+          "after": [
+            1.34,
+            1.42
+          ]
+        },
+        "speedup": 1456.431654676259,
+        "saved_ms": 2023.05,
+        "outputs_equal": true,
+        "output": "true\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse"
+      },
+      "base64": {
+        "title": "String concatenation inside an overloaded Foundation initializer",
+        "paths": [
+          "Typecheck/Hotspots/Base64Before.swift",
+          "Typecheck/Hotspots/Base64After.swift"
+        ],
+        "change": "Extract the concatenation into a String-typed local value.",
+        "origin": "Adapted from the rdar180902902 scaling test, using actual Foundation.Data and a valid Hello payload.",
+        "source_url": "https://github.com/swiftlang/swift/blob/0c3bc9f591610887cb8bcf16cc16ac40f9669fc4/validation-test/Sema/type_checker_perf/slow/rdar180902902.swift.gyb",
+        "upstream_blob_sha": "ac8f8865aa65a95b93cbb312cffe5a7b0dcceea9",
+        "source_text": {
+          "before": "import Foundation\n\nfunc value() -> Data? {\n    return Data(base64Encoded:\n        \"S\" + \"G\" + \"V\" + \"s\" + \"b\" + \"G8=\", options: [])\n}\n",
+          "after": "import Foundation\n\nfunc value() -> Data? {\n    let encoded: String =\n        \"S\" + \"G\" + \"V\" + \"s\" + \"b\" + \"G8=\"\n    return Data(base64Encoded: encoded, options: [])\n}\n"
+        },
+        "source_sha256": {
+          "before": "9f9249730846cd95f079958d7affe174f6df9eb0bbf85bbd1ddc906961132c12",
+          "after": "8157638b591ec83775f5baf4e644e0d4752239dfe40f9e8ca711323ed6b27904"
+        },
+        "samples": [
+          {
+            "trial": 1,
+            "variant": "before",
+            "function_ms": 489.63,
+            "wall_seconds": 1.4339002910000005
+          },
+          {
+            "trial": 1,
+            "variant": "after",
+            "function_ms": 8.14,
+            "wall_seconds": 0.9358824169999984
+          },
+          {
+            "trial": 2,
+            "variant": "after",
+            "function_ms": 7.55,
+            "wall_seconds": 0.9270212920000027
+          },
+          {
+            "trial": 2,
+            "variant": "before",
+            "function_ms": 489.92,
+            "wall_seconds": 1.4009307500000006
+          },
+          {
+            "trial": 3,
+            "variant": "before",
+            "function_ms": 495.36,
+            "wall_seconds": 1.406836583999997
+          },
+          {
+            "trial": 3,
+            "variant": "after",
+            "function_ms": 7.6,
+            "wall_seconds": 0.9228197079999987
+          },
+          {
+            "trial": 4,
+            "variant": "after",
+            "function_ms": 7.82,
+            "wall_seconds": 0.9223214999999954
+          },
+          {
+            "trial": 4,
+            "variant": "before",
+            "function_ms": 494.81,
+            "wall_seconds": 1.4180904579999947
+          },
+          {
+            "trial": 5,
+            "variant": "before",
+            "function_ms": 491.61,
+            "wall_seconds": 1.4070662920000032
+          },
+          {
+            "trial": 5,
+            "variant": "after",
+            "function_ms": 7.63,
+            "wall_seconds": 0.9231503749999987
+          },
+          {
+            "trial": 6,
+            "variant": "after",
+            "function_ms": 7.55,
+            "wall_seconds": 0.9265485000000027
+          },
+          {
+            "trial": 6,
+            "variant": "before",
+            "function_ms": 498.68,
+            "wall_seconds": 1.4126919999999998
+          },
+          {
+            "trial": 7,
+            "variant": "before",
+            "function_ms": 520.99,
+            "wall_seconds": 1.4632949579999988
+          },
+          {
+            "trial": 7,
+            "variant": "after",
+            "function_ms": 8.18,
+            "wall_seconds": 1.0580778329999987
+          }
+        ],
+        "medians": {
+          "before_ms": 494.81,
+          "after_ms": 7.63
+        },
+        "ranges_ms": {
+          "before": [
+            489.63,
+            520.99
+          ],
+          "after": [
+            7.55,
+            8.18
+          ]
+        },
+        "speedup": 64.85058977719528,
+        "saved_ms": 487.18,
+        "outputs_equal": true,
+        "output": "[72, 101, 108, 108, 111]"
+      }
+    },
+    "notes": [
+      "Milliseconds are for the complete value() function, including all statements after splitting.",
+      "Each sample uses a fresh compiler process and private empty module cache; compilation caching is off.",
+      "Variant order alternates. OS page caches and SDK prebuilts are retained.",
+      "Wall time is recorded separately and includes compiler startup and imports.",
+      "No altered solver limits, disabled heuristics, or deliberately invalid expressions.",
+      "Timings vary with hardware and compiler revisions; future compilers may fix these cases."
+    ]
+  }
+}

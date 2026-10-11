@@ -3,6 +3,7 @@
 
 import json
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_PATHS = {
@@ -25,12 +26,43 @@ def load_reports():
                  for name in ('expression', 'manifest'))
 
 
-def enrich(data):
-    expression, manifest = load_reports()
+def enrich_expression(data, expression):
+    """Update only expression measurements, retaining the full-build/manifest runs."""
     if not expression['outputs_equal']:
         raise RuntimeError('Expression outputs must match')
     before = expression['medians']['before_ms']
     after = expression['medians']['after_ms']
+    xcode = expression.get('xcode', 'Xcode version not recorded').splitlines()[0]
+    swift_match = re.search(r'Swift version ([\d.]+)', expression.get('swift', ''))
+    swift = 'Swift ' + swift_match[1] if swift_match else 'Swift version not recorded'
+    toolchain = xcode + ' · ' + swift + ' · mode ' + expression.get('language_mode', 'unrecorded')
+    data['expressionSources'] = expression['source_text']
+    data.setdefault('microbenchmarkReports', {})['expression'] = 'evidence/expression-probe/report.json'
+    data['slideValues'].update({
+        'expression.before': number(before), 'expression.after': number(after),
+        'expression.repeats': str(expression['repeats']),
+        'expression.toolchain': toolchain,
+        'expression.date': expression['date'],
+        'expression.speedup': f'{before / after:.0f}×',
+        'expression.savedMs': number(before - after)})
+    data['noteValues'].update({
+        'expression.beforeMs': number(before), 'expression.afterMs': number(after),
+        'expression.repeats': str(expression['repeats']),
+        'expression.toolchain': toolchain})
+    data['expressionMeasurement'] = {key: expression[key] for key in (
+        'date', 'xcode', 'swift', 'language_mode', 'machine', 'repeats') if key in expression}
+    data['experimentNotes']['expression'] = (
+        f"Standalone synthetic example: {expression['repeats']} repetitions, {xcode}, {expression['date']}. "
+        f"Type checking the whole value() function: {number(before)} → {number(after)} ms. "
+        'The only change is a Double annotation on the local x. '
+        'Identical Double bit patterns were verified. This is not total build time. '
+        'The other slide experiments retain their own recorded dates and toolchains.')
+    return data
+
+
+def enrich(data):
+    expression, manifest = load_reports()
+    enrich_expression(data, expression)
     compile_time = manifest['direct_compile']['median_seconds']
     execute_time = manifest['direct_evaluate']['median_seconds']
     dump_time = manifest['swiftpm_end_to_end']['median_seconds']
@@ -56,11 +88,6 @@ def enrich(data):
         'manifest.dumpSeconds': number(dump_time),
         'manifest.serial100Seconds': str(round(100 * compile_time)),
         'project.sourceLines': f'{source_lines:,}'})
-    data['experimentNotes']['expression'] = (
-        f"Standalone example: {expression['repeats']} repetitions. "
-        f"Type checking the whole value() function: {number(before)} → {number(after)} ms. "
-        'The only change is a Double annotation on the local x. '
-        'Identical Double bit patterns were verified. This is not total build time.')
     data['experimentNotes']['manifest'] = (
         f"Standalone minimal manifest: {manifest['repeats']} repetitions. "
         f"swift package dump-package: {number(dump_time)} s; "
@@ -74,7 +101,7 @@ def enrich(data):
 def report_markdown():
     expression, manifest = load_reports()
     lines = ['', '## Standalone expression example', '',
-             'Type-checking time for the **whole function** measured with `-debug-time-function-bodies`, seven repetitions. The only source change is an explicit `: Double` on the local value. Result bit patterns are identical.', '',
+             f"Type-checking time for the **whole function** measured with `-debug-time-function-bodies`, {expression['repeats']} repetitions. The only source change is an explicit `: Double` on the local value. Result bit patterns are identical.", '',
              '| Variant | Median, ms | Range, ms |', '|---|---:|---:|']
     for variant, label in [('before', 'Without annotation'), ('after', 'With `: Double`')]:
         lo, hi = expression['ranges_ms'][variant]
