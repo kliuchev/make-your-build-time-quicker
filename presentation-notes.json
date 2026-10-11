@@ -230,12 +230,23 @@
         "Type checking one function, in milliseconds"
       ],
       "speakerNotes": [
-        "This slide shows the complete code that we measured, before and after. It’s a small, separate example, so these timings don’t include the package graph or the full build.",
-        "The median type-checking time for the whole function is {{expression.beforeMs}} milliseconds before and {{expression.afterMs}} milliseconds after. We ran it seven times with Swift 6.4 and fresh module caches. The timings come from -debug-time-function-bodies, and we separately verified that the results match.",
-        "We count the time for the whole function, including every new intermediate expression. Comparing the slowest old line with the slowest new piece would be misleading."
+        "This slide shows the complete code that we measured. Nine factors are a synthetic stress test. Adding just two factors to the old seven-factor example pushes inference into the hundreds of milliseconds on this toolchain.",
+        "The median type-checking time for the whole function is {{expression.beforeMs}} milliseconds before and {{expression.afterMs}} milliseconds after. We ran it {{expression.repeats}} times with {{expression.toolchain}} and fresh private module caches. The timings come from -debug-time-function-bodies; both variants produce the same Double bit pattern.",
+        "The only change is an explicit Double type on the local x. The return type does not give the preceding local initializer the same contextual type information.",
+        "The repository also includes a generic key path API with optional enum comparisons and a Foundation Data initializer example. Both have independently measured complete-function timings and runtime verification. See Typecheck/Hotspots/README.md and measurements.json.",
+        "These are type-checking timings for a standalone function. The other slides retain their separately measured full-build conditions. We count every statement in the whole function, including all intermediate values introduced by splitting."
       ],
       "transition": "Sometimes we can avoid doing that work again altogether.",
-      "sourceURLs": [],
+      "sourceURLs": [
+        {
+          "title": "Swift compiler performance guide",
+          "url": "https://github.com/swiftlang/swift/blob/main/docs/CompilerPerformance.md"
+        },
+        {
+          "title": "Additional valid examples and recorded measurements",
+          "url": "https://github.com/kliuchev/make-your-build-time-quicker/blob/main/Typecheck/Hotspots/README.md"
+        }
+      ],
       "durationSeconds": 60,
       "startSeconds": 400,
       "start": "6:40",

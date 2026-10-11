@@ -21,9 +21,9 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def run(command, log):
+def run(command, log, timeout=60):
     start = time.perf_counter()
-    result = subprocess.run(command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout)
     seconds = time.perf_counter() - start
     log.with_suffix(".stdout.log").write_text(result.stdout, encoding="utf-8")
     log.with_suffix(".stderr.log").write_text(result.stderr, encoding="utf-8")
@@ -62,7 +62,7 @@ def main():
             modules = directory / "modules"
             if modules.exists():
                 raise RuntimeError("Expected a fresh module cache")
-            command = [compiler, "-typecheck", "-module-cache-path", str(modules),
+            command = [compiler, "-swift-version", "5", "-typecheck", "-module-cache-path", str(modules),
                        "-Xfrontend", "-debug-time-function-bodies", str(snapshots[variant])]
             seconds, _, output = run(command, directory / "typecheck")
             values = re.findall(r"(?m)^([\d.]+)ms\s[^\n]*global function[^\n]*\.value\(", output)
@@ -80,7 +80,7 @@ def main():
         main_source = directory / "main.swift"
         main_source.write_text('print(value().bitPattern)\n', encoding="utf-8")
         executable = directory / "verify"
-        command = [compiler, "-module-cache-path", str(directory / "modules"), str(snapshots[variant]),
+        command = [compiler, "-swift-version", "5", "-module-cache-path", str(directory / "modules"), str(snapshots[variant]),
                    str(main_source), "-o", str(executable)]
         run(command, directory / "compile")
         _, stdout, _ = run([str(executable)], directory / "execute")
@@ -91,6 +91,9 @@ def main():
               for variant in ("before", "after")}
     report = {"method": "whole-function-typechecking-v1", "date": time.strftime("%Y-%m-%d"),
               "python": platform.python_version(), "machine": platform.platform(),
+              "xcode": subprocess.check_output(["xcodebuild", "-version"], text=True).strip(),
+              "developer_dir": subprocess.check_output(["xcode-select", "-p"], text=True).strip() if not os.environ.get("DEVELOPER_DIR") else os.environ["DEVELOPER_DIR"],
+              "language_mode": "5",
               "swift": subprocess.run([compiler, "--version"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=True).stdout.strip(),
               "repeats": args.repeats, "samples": samples,
               "medians": {variant + "_ms": statistics.median(value) for variant, value in values.items()},
@@ -101,7 +104,7 @@ def main():
               "source_sha256": {key: hashlib.sha256(value.encode()).hexdigest() for key, value in source_text.items()},
               "outputs_equal": True, "double_bit_patterns": outputs, "batch": str(batch),
               "notes": ["The reported milliseconds come from -debug-time-function-bodies for the complete value() body, not the slowest subexpression.",
-                        "The only source change is the explicit Double annotation on the local x variable.",
+                        "The only source change is the explicit Double annotation on the local x variable. The nine-factor expression is a synthetic solver stress test.",
                         "Both functions are independently compiled and executed; their Double bit patterns match.",
                         "Each timing sample starts a fresh swiftc process with a new private module cache. Compiler caching is disabled.",
                         "Order alternates across trials. SDK/toolchain prebuilts and OS page cache remain available.",

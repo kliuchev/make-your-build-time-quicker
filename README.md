@@ -26,6 +26,25 @@ The script runs the controlled build comparisons, checks that program outputs ma
 
 Reports, evidence and temporary builds are local outputs excluded from Git: `RESULTS.md`, `evidence/` and `.benchmark-runs/`.
 
+## Expensive type inference on Xcode 27.1
+
+For larger absolute savings, [three valid examples](Typecheck/Hotspots/README.md) cover numeric literals, generic closures with optional enums, and Foundation initializer overloads. The expression slide now uses a nine-factor expression rather than the old seven-factor example. Recorded source hashes, individual runs and output checks are shipped in [measurements.json](Typecheck/Hotspots/measurements.json).
+
+| Example | Before, ms | After, ms | Saved, ms | Speedup |
+|---|---:|---:|---:|---:|
+| Nine factors + `: Double` | 1002.98 | 4.54 | 998.44 | 221× |
+| Typed generic closure | 2096.05 | 1.53 | 2094.52 | 1370× |
+| Typed Base64 string | 552.86 | 7.78 | 545.08 | 71× |
+
+Run just these examples with **Xcode 27.1 or newer**:
+
+```sh
+python3 scripts/typecheck_hotspots.py --repeats 7
+python3 scripts/refresh_microbenchmarks.py --expression-only --hotspots
+```
+
+The primary measurements use **Swift 6 language mode**, default solver limits and seven runs. They measure the complete function body and verify equivalent runtime output. The original full-build results below retain their Xcode 27.0 conditions.
+
 ## Recorded results
 
 Full-build medians from three runs on **Mac17,9 · arm64 · 24 GB RAM**, using **Xcode 27.0 / Swift 6.4**, Swift Build, Debug without DWARF and 8 jobs. Recorded on September 16, 2026.
