@@ -22,7 +22,7 @@
   "slides": [
     {
       "id": 1,
-      "title": "Hello, NSLondon",
+      "title": "Hello",
       "durationSeconds": 30,
       "onSlide": [
         "Sviatoslav Kliuchev",
