@@ -6,13 +6,13 @@
 expression in reasonable time; try breaking up
 the expression into distinct sub-expressions</pre><p class="statement">Look familiar?</p><template class="notes"><p>Does this message look familiar? The compiler can’t type-check the expression in reasonable time. What’s reasonable for the compiler can feel pretty painful to us.</p><p>Swift resolves overloads and infers types. The more connected, ambiguous choices an expression contains, the more work the solver has to do. So code that looks short isn’t necessarily quick to check.</p><p>Apple is working on this too.</p><p><a href="https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048">https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048</a></p></template></section><section class="slide  " id="slide-9" data-title="What changed in Swift 6.4" data-time="4:45–5:45" data-experiment=""><div class="section-label">01 / Type checking</div><h2>What changed<br>in Swift 6.4</h2><div class="cols"><div class="ruled"><h3>The compiler</h3><p>Rules out unsuitable overloads earlier.</p><p>Narrows down possible types and recomputes only affected choices.</p></div><div class="ruled"><h3>SwiftUI in Xcode 27</h3><p>ContentBuilder reduces the alternatives in builder expressions.</p><p>Also works with older deployment targets.</p></div></div><p class="foot">Complex expressions and error diagnostics can still be expensive.</p><template class="notes"><p>Swift 6.4 includes several changes to the compiler itself. Disjunction pruning rules out overloads earlier when they clearly cannot work. Improved binding inference narrows down the possible types more precisely. Some repeated calculations now happen only after the constraints change.</p><p>Separately, the SwiftUI SDK in Xcode 27 introduced ContentBuilder. Common builder APIs are unified, giving the compiler fewer alternatives between different kinds of content.</p><p>These are two separate groups of improvements. They don’t make every expression instant: complex closures, overloads and especially diagnostics for invalid code remain difficult cases. And invalid code is exactly what an agent often needs to check.</p><p>What can we do in our projects today?</p><p><a href="https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048">https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048</a></p><p><a href="https://developer.apple.com/videos/play/wwdc2026/269/">https://developer.apple.com/videos/play/wwdc2026/269/</a></p></template></section><section class="slide  " id="slide-10" data-title="Type inference can still be difficult" data-time="5:45–6:40" data-experiment=""><div class="section-label">01 / Type checking</div><h2>Even so…</h2><p class="large-lede">Type inference problems<br>still remain.</p><div class="plain-list compact-list"><p>Find slow expressions in the build log.</p><p>Give intermediate values explicit types.</p><p>Split long expressions into smaller pieces.</p></div><div class="diagnostics"><code>-Xfrontend -warn-long-expression-type-checking=20</code><code>-Xfrontend -warn-long-function-bodies=200</code></div><template class="notes"><p>Type inference can still run into problems. Diagnosing code that is already invalid can be especially difficult: the solver also tries to work out what we meant.</p><p>A practical first step is to enable diagnostics for slow expressions and functions. The thresholds on the slide are examples for finding problems, not a permanent rule for CI. Then give the compiler some help: explicit types, intermediate values and shorter expressions.</p><p>Here’s a concrete example at the level of one function.</p><p><a href="https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048">https://forums.swift.org/t/recent-improvements-to-the-type-checker/87048</a></p><p><a href="https://forums.swift.org/t/roadmap-for-improving-the-type-checker/82952">https://forums.swift.org/t/roadmap-for-improving-the-type-checker/82952</a></p></template></section><section class="slide  " id="slide-11" data-title="Type checking: one expression, before and after" data-time="6:40–7:40" data-experiment="expression"><div class="section-label">01 / Isolated measurement</div><h2>Same result. Less guesswork.</h2><div class="cols expression-cols"><div><p class="label">Inferred types</p><pre>func value() -&gt; Double {
     let x = 1 * 2 * 3 * 4
-        * 5 * 6 * 7.5
+        * 5 * 6 * 7 * 8 * 9.5
     return x
 }</pre><p class="expression-time"><span data-value="expression.before">—</span><small>ms</small></p></div><div><p class="label">Explicit types</p><pre>func value() -&gt; Double {
     let x<mark>: Double</mark> = 1 * 2 * 3 * 4
-        * 5 * 6 * 7.5
+        * 5 * 6 * 7 * 8 * 9.5
     return x
-}</pre><p class="expression-time"><span data-value="expression.after">—</span><small>ms</small></p></div></div><p class="foot">Whole-function type checking · Swift 6.4 · median of <span data-value="expression.repeats">—</span> runs · identical output.</p><template class="notes"><p>This slide shows the complete code that we measured, before and after. It’s a small, separate example, so these timings don’t include the package graph or the full build.</p><p>The median type-checking time for the whole function is {{expression.beforeMs}} milliseconds before and {{expression.afterMs}} milliseconds after. We ran it seven times with Swift 6.4 and fresh module caches. The timings come from -debug-time-function-bodies, and we separately verified that the results match.</p><p>We count the time for the whole function, including every new intermediate expression. Comparing the slowest old line with the slowest new piece would be misleading.</p><p>Sometimes we can avoid doing that work again altogether.</p></template></section><section class="slide section-slide " id="slide-12" data-title="Compile cache" data-time="7:40–7:55" data-experiment=""><div class="section-label"></div><h1 class="cache-title">Compile cache</h1><p class="statement">Just turn it on.</p><template class="notes"><p>Compile cache. Just turn it on. When the compiler sees the same inputs again, it can return the result it saved earlier.</p><p>In Xcode, that starts with two settings.</p><p><a href="https://developer.apple.com/documentation/xcode/build-settings-reference">https://developer.apple.com/documentation/xcode/build-settings-reference</a></p></template></section><section class="slide  " id="slide-13" data-title="How to enable compile cache" data-time="7:55–8:30" data-experiment=""><div class="section-label">02 / Compile cache</div><h2>Two settings in Xcode</h2><p class="lede">In your project’s .xcconfig or Build Settings</p><pre class="cache-flags">COMPILATION_CACHE_ENABLE_CACHING = YES
+}</pre><p class="expression-time"><span data-value="expression.after">—</span><small>ms</small></p></div></div><p class="foot">Whole function · <span data-value="expression.toolchain">—</span> · median of <span data-value="expression.repeats">—</span> runs · identical output.<br>Synthetic expression · <span data-value="expression.speedup">—</span> faster · <span data-value="expression.savedMs">—</span> ms saved · <span data-value="expression.date">—</span></p><template class="notes"><p>This slide shows the complete code that we measured. Nine factors are a synthetic stress test. Adding just two factors to the old seven-factor example pushes inference into the hundreds of milliseconds on this toolchain.</p><p>The median type-checking time for the whole function is {{expression.beforeMs}} milliseconds before and {{expression.afterMs}} milliseconds after. We ran it {{expression.repeats}} times with {{expression.toolchain}} and fresh private module caches. The timings come from -debug-time-function-bodies; both variants produce the same Double bit pattern.</p><p>The only change is an explicit Double type on the local x. The return type does not give the preceding local initializer the same contextual type information.</p><p>The repository also includes a generic key path API with optional enum comparisons and a Foundation Data initializer example. Both have independently measured complete-function timings and runtime verification. See Typecheck/Hotspots/README.md and measurements.json.</p><p>These are type-checking timings for a standalone function. The other slides retain their separately measured full-build conditions. We count every statement in the whole function, including all intermediate values introduced by splitting.</p><p>Sometimes we can avoid doing that work again altogether.</p><p><a href="https://github.com/swiftlang/swift/blob/main/docs/CompilerPerformance.md">Swift compiler performance guide</a></p><p><a href="https://github.com/kliuchev/make-your-build-time-quicker/blob/main/Typecheck/Hotspots/README.md">Additional valid examples and recorded measurements</a></p></template></section><section class="slide section-slide " id="slide-12" data-title="Compile cache" data-time="7:40–7:55" data-experiment=""><div class="section-label"></div><h1 class="cache-title">Compile cache</h1><p class="statement">Just turn it on.</p><template class="notes"><p>Compile cache. Just turn it on. When the compiler sees the same inputs again, it can return the result it saved earlier.</p><p>In Xcode, that starts with two settings.</p><p><a href="https://developer.apple.com/documentation/xcode/build-settings-reference">https://developer.apple.com/documentation/xcode/build-settings-reference</a></p></template></section><section class="slide  " id="slide-13" data-title="How to enable compile cache" data-time="7:55–8:30" data-experiment=""><div class="section-label">02 / Compile cache</div><h2>Two settings in Xcode</h2><p class="lede">In your project’s .xcconfig or Build Settings</p><pre class="cache-flags">COMPILATION_CACHE_ENABLE_CACHING = YES
 COMPILATION_CACHE_ENABLE_DIAGNOSTIC_REMARKS = YES</pre><div class="cols ruled"><div><h3>First build</h3><p>Compiles and stores the result.</p></div><div><h3>Next build</h3><p>Reuses it when the inputs match.</p></div></div><p class="foot">Check the build log for cache hits. New code, flags or SDKs can cause misses.</p><template class="notes"><p>The first setting enables compilation caching. The second helps you see hits and misses in the build log. You can set them in an xcconfig file or in Build Settings.</p><p>The first build needs to populate the cache. When a task runs again with the same sources, flags, SDK and dependencies, its result can come from the cache. After enabling it, check for actual hits in your workflow.</p><p>Here’s the measured result from the demo.</p><p><a href="https://developer.apple.com/documentation/xcode/build-settings-reference">https://developer.apple.com/documentation/xcode/build-settings-reference</a></p></template></section><section class="slide  " id="slide-14" data-title="Compile cache only: before and after" data-time="8:30–9:20" data-experiment="cache"><div class="section-label">02 / Isolated measurement</div><h2>Compile cache only:<br>before and after</h2><p class="lede"><span data-value="project.sourceLines">—</span> lines of Swift · 101 targets · one Package.swift</p><div class="pair"><div><p class="label">Cache OFF</p><p class="big metric"><span data-value="cache.before">—</span><small>s</small></p></div><span class="pair-arrow">→</span><div><p class="label">Warm cache ON</p><p class="big metric"><span data-value="cache.after">—</span><small>s</small></p></div></div><div class="cache-evidence"><strong><span data-value="cache.hits">—</span></strong><span><span data-value="cache.misses">—</span></span><span>actual compiler remarks</span></div><p class="foot">Same code. Fresh build / DerivedData and module caches; only CAS retained. <span data-value="build.repeats">—</span> runs, Debug without DWARF.</p><template class="notes"><p>First, some context: the demo has {{project.sourceLines}} lines of Swift across 101 source files, with 100 library targets and one executable. In this comparison, everything is under one Package.swift, and the sources are identical.</p><p>With the cache off: {{cacheOnly.beforeSeconds}} seconds. After a separate step to populate the compiler cache: {{cacheOnly.afterSeconds}} seconds. Both builds have fresh build artifacts, DerivedData and module caches. Only the CAS is retained in the right-hand column, so that cache is not completely cold.</p><p>We recorded {{cacheOnly.hits}} hits and zero misses: 101 objects, 101 Swift modules and two SDK tasks. {{build.repeats}} runs, on the same machine, using Swift 6.4 and Debug without DWARF. The report includes the full method and ranges.</p><p>There are a few details to watch with paths and a shared team cache.</p></template></section><section class="slide  " id="slide-15" data-title="Cache: paths and teams" data-time="9:20–10:05" data-experiment=""><div class="section-label">02 / Cache limitations</div><h2>Cache: paths and teams</h2><div class="cols"><div class="ruled"><h3>Separate branch directories</h3><pre class="paths">/work/feature-a → HIT
 /work/feature-b → MISS</pre><p>Our test did not reuse the cache<br>across different directories.</p><p class="small-copy muted">Xcode 27 supports prefix mapping.<br>Configure it and verify the hits.</p></div><div class="ruled"><h3>Sharing cache with your team</h3><p>Enabling the cache<br>is only the first step.</p><p>Remote caching needs a separate<br>service and integration.</p><p class="small-copy muted">For example, through Tuist.</p></div></div><p class="foot">The path test reflects our configuration without prefix mapping.</p><template class="notes"><p>Our control test without prefix mapping produced a hit at the original path and a miss after moving the same sources to another directory. So separate worktree directories may not automatically reuse cached results.</p><p>That isn’t a fundamental restriction on reuse between directories. Xcode 27 has Swift and Clang prefix mapping, including project prefix mapping. Check those settings against real cache hits in your project.</p><p>It would also be wrong to say that remote caching isn’t supported at all. For example, Tuist can share compilation artifacts between machines through a service and plugin integration. The COMPILATION_CACHE_ENABLE_CACHING flag alone doesn’t enable that sharing.</p><p>The next source of waiting is the package structure.</p><p><a href="https://forums.swift.org/t/about-swift-shared-cache-across-machines/81850">https://forums.swift.org/t/about-swift-shared-cache-across-machines/81850</a></p><p><a href="https://tuist.dev/en/docs/guides/features/cache/xcode-cache">https://tuist.dev/en/docs/guides/features/cache/xcode-cache</a></p></template></section><section class="slide  " id="slide-16" data-title="Modularization + SPM" data-time="10:05–10:30" data-experiment=""><div class="section-label">03 / Packages</div><h2>Modularization + SPM</h2><p class="large-lede">A large project. Clean Architecture.</p><div class="architecture-flow"><div><p class="label">Features</p><h3>Feature packages</h3></div><span>+</span><div><p class="label">Layers</p><h3>Data · Domain · Presentation</h3></div></div><p class="statement">Nice and clean.<br><span class="muted">But this structure comes at a cost.</span></p><template class="notes"><p>If you work on a large project with Clean Architecture, you probably have feature packages and separate Data, Domain and Presentation layers.</p><p>It all looks nice and clean: visible dependencies and tidy boundaries. But when every layer is a separate package, the build system pays for it.</p><p>Let’s count them.</p></template></section><section class="slide  " id="slide-17" data-title="33 features become 100 packages" data-time="10:30–10:55" data-experiment=""><div class="section-label">03 / Packages</div><h2>How you end up with 100 packages</h2><div class="package-equation"><div><strong>33</strong><span>features</span></div><b>×</b><div><strong>3</strong><span>layers</span></div><b>+</b><div><strong>1</strong><span>Shared</span></div><b>=</b><div><strong>100</strong><span>packages</span></div></div><pre class="layers-inline">Feature01Data    Feature01Domain    Feature01Presentation</pre><p class="foot">The demo also has a root executable package: 101 Package.swift files in total.</p><template class="notes"><p>Thirty-three features, each with three layers: Data, Domain and Presentation. Plus one common Shared package. That gives us one hundred separate packages.</p><p>The demo also has a root executable package above them. That’s why the measurements use 101 Package.swift files. It’s the same hundred application packages plus the root, not a different project.</p><p>What happens to each of those manifests?</p></template></section><section class="slide  " id="slide-18" data-title="Package.swift needs compiling too" data-time="10:55–11:45" data-experiment="manifest"><div class="section-label">03 / The cost of manifests</div><h2>Package.swift needs<br>compiling too</h2><div class="cols"><div class="plain-list"><p>Compile the Swift manifest.</p><p>Run it to get the package description.</p><p>Resolve dependencies and plan the build.</p></div><div class="manifest-measure"><p class="label">Minimal manifest on this machine</p><p class="big"><span data-value="manifest.compile">—</span><small>s</small></p><p class="small-copy">Compile + link · <span data-value="manifest.repeats">—</span> runs.<br>Full SwiftPM CLI: <span data-value="manifest.dump">—</span> s.</p></div></div><p class="foot">SwiftPM startup and manifest execution are measured separately. Target source compilation is not included.</p><template class="notes"><p>Package.swift is a Swift program. With an empty manifest cache, it has to be compiled and run to obtain the package description. SwiftPM then connects the graph and prepares the target tasks.</p><p>I separately measured a minimal four-line manifest with no targets. On this machine, the median for compilation and linking was {{manifest.compileSeconds}} seconds, and execution took {{manifest.executeSeconds}} seconds. A complete, separate swift package dump-package invocation took {{manifest.dumpSeconds}} seconds. Seven runs, with fresh private caches.</p><p>So about half a second is accurate for the full CLI invocation in this example. But calling 0.6 seconds the minimum compilation cost of any Package.swift would be inaccurate.</p><p>Let’s multiply the part we actually measured.</p><p><a href="https://github.com/swiftlang/swift-package-manager/blob/main/Sources/PackageLoading/ManifestLoader.swift">https://github.com/swiftlang/swift-package-manager/blob/main/Sources/PackageLoading/ManifestLoader.swift</a></p></template></section><section class="slide  " id="slide-19" data-title="This work repeats for every package" data-time="11:45–12:10" data-experiment=""><div class="section-label">03 / The cost of scale</div><h2>This work repeats<br>for every package</h2><div class="manifest-equation"><strong>100 × <span data-value="manifest.compile">—</span> s</strong><span>≈</span><strong><span data-value="manifest.serial100">—</span> s</strong></div><p class="large-lede">Estimated time to compile<br>100 minimal manifests sequentially.</p><p class="foot">An estimate of total work. Parallelism and shared caches change elapsed build time.</p><template class="notes"><p>If we repeated that measured minimal-manifest compilation one hundred times in sequence, it would take around {{manifest.serial100Seconds}} seconds. And that’s before compiling the targets themselves.</p><p>This illustrates accumulated work, not an exact total build time. Within a build, some work runs in parallel and can share caches. So our measurements don’t support saying that a hundred packages means at least a minute. To see the full effect, we’ll compare the project itself.</p><p>The solution is to reduce the number of manifests.</p></template></section><section class="slide solution-slide " id="slide-20" data-title="The solution: fewer packages" data-time="12:10–13:00" data-experiment=""><div class="section-label">03 / Packages</div><p class="eyebrow">The solution</p><h2>Fewer packages</h2><div class="cols ruled"><div><h3>One package per feature</h3><pre>Feature01/Package.swift
   target: Data
@@ -55,8 +55,8 @@ COMPILATION_CACHE_ENABLE_DIAGNOSTIC_REMARKS = YES</pre><div class="cols ruled"><
     "combined.gain": "90.9% less time at the median",
     "cache.hits": "204 cache hits",
     "cache.misses": "0 misses",
-    "expression.before": "22.52",
-    "expression.after": "4.09",
+    "expression.before": "1002.98",
+    "expression.after": "4.54",
     "manifest.compile": "0.23",
     "manifest.dump": "0.52",
     "manifest.execute": "0.13",
@@ -64,7 +64,11 @@ COMPILATION_CACHE_ENABLE_DIAGNOSTIC_REMARKS = YES</pre><div class="cols ruled"><
     "project.sourceLines": "1,452",
     "build.repeats": "3",
     "expression.repeats": "7",
-    "manifest.repeats": "7"
+    "manifest.repeats": "7",
+    "expression.toolchain": "Xcode 27.1 · Swift 6.4 · mode 6",
+    "expression.date": "2026-10-11",
+    "expression.speedup": "221×",
+    "expression.savedMs": "998.44"
   },
   "slideNumbers": {
     "type.before": 9.282736125,
@@ -89,31 +93,122 @@ COMPILATION_CACHE_ENABLE_DIAGNOSTIC_REMARKS = YES</pre><div class="cols ruled"><
     "packagesOnly.singleSeconds": "9.28",
     "combined.beforeSeconds": "52.63",
     "combined.afterSeconds": "4.76",
-    "expression.beforeMs": "22.52",
-    "expression.afterMs": "4.09",
+    "expression.beforeMs": "1002.98",
+    "expression.afterMs": "4.54",
     "manifest.compileSeconds": "0.23",
     "manifest.executeSeconds": "0.13",
     "manifest.dumpSeconds": "0.52",
     "manifest.serial100Seconds": "23",
     "project.sourceLines": "1,452",
-    "build.repeats": "3"
+    "build.repeats": "3",
+    "expression.repeats": "7",
+    "expression.toolchain": "Xcode 27.1 · Swift 6.4 · mode 6"
   },
   "experimentNotes": {
     "type": "single/cold_off: median 9.28 s, range 9.25–9.28 s. optimized/cold_off: median 6.44 s, range 6.37–6.55 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
     "cache": "single/cold_off: median 9.28 s, range 9.25–9.28 s. single/cache_fill: median 9.24 s, range 9.09–9.36 s. single/cache_hit: median 4.75 s, range 4.70–4.75 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
     "packages": "baseline/cold_off: median 52.63 s, range 36.26–53.35 s. feature/cold_off: median 23.01 s, range 18.26–24.95 s. single/cold_off: median 9.28 s, range 9.25–9.28 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
     "combined": "baseline/cold_off: median 52.63 s, range 36.26–53.35 s. optimized/cold_off: median 6.44 s, range 6.37–6.55 s. optimized/cache_fill: median 6.58 s, range 6.54–6.60 s. optimized/cache_hit: median 4.76 s, range 4.75–4.81 s. Mac17,9 · arm64 · 24 GB RAM. Xcode 27.0 · Swift 6.4 · Debug · 8 jobs. Backend: swiftbuild. Time from command launch to process exit. Debug (-Onone), no DWARF. All build artifacts and module caches are fresh. OS file cache was not purged.",
-    "expression": "Standalone example: 7 repetitions. Type checking the whole value() function: 22.52 → 4.09 ms. The only change is a Double annotation on the local x. Identical Double bit patterns were verified. This is not total build time.",
+    "expression": "Standalone synthetic example: 7 repetitions, Xcode 27.1, 2026-10-11. Type checking the whole value() function: 1002.98 → 4.54 ms. The only change is a Double annotation on the local x. Identical Double bit patterns were verified. This is not total build time. The other slide experiments retain their own recorded dates and toolchains.",
     "manifest": "Standalone minimal manifest: 7 repetitions. swift package dump-package: 0.52 s; swiftc compile + link: 0.23 s; JSON execution: 0.13 s. These are separate measurements; their medians do not necessarily add up. OS file cache and shipped SDK modules are retained."
   },
   "reportPath": "evidence/isolated/report.json",
   "expressionSources": {
-    "before": "func value() -> Double {\n    let x = 1 * 2 * 3 * 4\n        * 5 * 6 * 7.5\n    return x\n}\n",
-    "after": "func value() -> Double {\n    let x: Double = 1 * 2 * 3 * 4\n        * 5 * 6 * 7.5\n    return x\n}\n"
+    "before": "func value() -> Double {\n    let x = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n",
+    "after": "func value() -> Double {\n    let x: Double = 1 * 2 * 3 * 4\n        * 5 * 6 * 7 * 8 * 9.5\n    return x\n}\n"
   },
   "microbenchmarkReports": {
-    "expression": "evidence/expression-probe/report.json",
+    "expression": "evidence/typecheck-hotspots/report.json (product case)",
     "manifest": "evidence/manifest-probe/report.json"
+  },
+  "expressionMeasurement": {
+    "date": "2026-10-11",
+    "xcode": "Xcode 27.1\nBuild version 27A9269",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx26.0",
+    "language_mode": "6",
+    "machine": "macOS-26.6.2-arm64-arm-64bit",
+    "repeats": 7
+  },
+  "typecheckHotspots": {
+    "date": "2026-10-11",
+    "xcode": "Xcode 27.1\nBuild version 27A9269",
+    "language_mode": "6",
+    "repeats": 7,
+    "reportPath": "Typecheck/Hotspots/measurements.json",
+    "cases": {
+      "product": {
+        "title": "Nine factors, with a floating-point literal last",
+        "paths": [
+          "Typecheck/ExpressionBefore.swift",
+          "Typecheck/ExpressionAfter.swift"
+        ],
+        "medians": {
+          "before_ms": 1002.98,
+          "after_ms": 4.54
+        },
+        "ranges_ms": {
+          "before": [
+            910.48,
+            1216.15
+          ],
+          "after": [
+            4.21,
+            5.6
+          ]
+        },
+        "speedup": 220.92070484581498,
+        "saved_ms": 998.44,
+        "outputs_equal": true
+      },
+      "predicate": {
+        "title": "Generic key path API with optional enum comparisons",
+        "paths": [
+          "Typecheck/Hotspots/PredicateBefore.swift",
+          "Typecheck/Hotspots/PredicateAfter.swift"
+        ],
+        "medians": {
+          "before_ms": 2096.05,
+          "after_ms": 1.53
+        },
+        "ranges_ms": {
+          "before": [
+            1986.31,
+            2162.45
+          ],
+          "after": [
+            1.43,
+            3.14
+          ]
+        },
+        "speedup": 1369.967320261438,
+        "saved_ms": 2094.52,
+        "outputs_equal": true
+      },
+      "base64": {
+        "title": "String concatenation inside an overloaded Foundation initializer",
+        "paths": [
+          "Typecheck/Hotspots/Base64Before.swift",
+          "Typecheck/Hotspots/Base64After.swift"
+        ],
+        "medians": {
+          "before_ms": 552.86,
+          "after_ms": 7.78
+        },
+        "ranges_ms": {
+          "before": [
+            548.37,
+            554.95
+          ],
+          "after": [
+            7.67,
+            8.74
+          ]
+        },
+        "speedup": 71.06169665809769,
+        "saved_ms": 545.08,
+        "outputs_equal": true
+      }
+    }
   }
 }</script><script>
 (()=>{'use strict';
